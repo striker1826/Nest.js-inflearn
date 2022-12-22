@@ -9,14 +9,4 @@ export class AppController {
     private readonly appService: AppService,
     private readonly catsService: CatsService,
   ) {}
-
-  @Get('hello/:id/:name')
-  getHello(
-    @Req() req: string,
-    @Body() body,
-    @Param() param: { id: string; name: string },
-  ): string {
-    console.log(param);
-    return this.appService.getHello();
-  }
 }
