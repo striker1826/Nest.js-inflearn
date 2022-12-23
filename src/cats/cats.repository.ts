@@ -9,8 +9,17 @@ import { CatRequestDto } from './dto/cats.request.dto';
 export class CatsRepository {
   constructor(@InjectModel(Cat.name) private readonly catModel: Model<Cat>) {}
 
-  async existsByEmail(email: string) {
+  async findCatByEmail(email: string): Promise<Cat | null> {
+    const cat = await this.catModel.findOne({ email });
+    return cat;
+  }
+  async existsByEmail(email: string): Promise<object> {
     const result = await this.catModel.exists({ email });
+    return result;
+  }
+
+  async findCatByIdWithOutPassword(catId: string): Promise<Cat | null> {
+    const result = await this.catModel.findById(catId).select('-password');
     return result;
   }
 

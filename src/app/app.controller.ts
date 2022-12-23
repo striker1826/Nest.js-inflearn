@@ -1,5 +1,4 @@
-import { Controller, Get, Req } from '@nestjs/common';
-import { Body, Param } from '@nestjs/common/decorators';
+import { Controller } from '@nestjs/common';
 import { AppService } from './app.service';
 import { CatsService } from '../cats/cats.service';
 
